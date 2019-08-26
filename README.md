@@ -216,7 +216,7 @@ tar -zcvf vcf_archive.tar.gz vcfs
 * Remove post-imputation low freq SNPs and create final cleaned file:
 
 ```
-plink --bfile $binary_imputed \
+$plink --bfile $binary_imputed \
 --geno 0.01 \
 --maf 0.01 \
 --hwe 0.0001 \
