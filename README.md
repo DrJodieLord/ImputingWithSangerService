@@ -19,7 +19,7 @@ Assumes ch1-22
 ## Software and Files Required
 
 * **[PLINK 2.0 software](https://www.cog-genomics.org/plink/2.0/)**
-* PLINK binary files (.bed/.bim/.fam) which have undergone pre-imputation QC (*see [JoniColeman/gwas_scripts](https://github.com/JoniColeman/gwas_scripts)*).
+* PLINK binary files (.bed/.bim/.fam) which have undergone pre-imputation QC (*see [JoniColeman/gwas_scripts](https://github.com/JoniColeman/gwas_scripts)* for steps on this).
 * **[Python 3](https://www.python.org/downloads/)** and **[Conda for Python](https://docs.conda.io/projects/conda/en/latest/user-guide/install/macos.html)**
 * **pip** for Python. *Can be installed using the cURL command: `curl https://bootstrap.pypa.io/get-pip.py | python`. Can first check whether already installed by typing `pip --version`*
 * **snpflip** Python package. Install using pip: `pip install snpflip` *(package developed by [biocore-ntnu](https://github.com/biocore-ntnu/snpflip))*
@@ -43,7 +43,7 @@ Installation instructions can be found [here](https://www.globus.org/globus-conn
 ```
 plink=/path/to/plink
 binary=/path/to/[prefix of PLINK binary file name - omitting .bed/.bim/.fam]
-scripts=/path/to/scripts/directory
+scripts=/path/to/imputation/scripts/directory
 snpflip=/path/to/snpflip/directory
 fasta=/path/to/fasta/file
 ```
