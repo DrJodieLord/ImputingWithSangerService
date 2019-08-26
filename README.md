@@ -239,6 +239,8 @@ $plink --bfile $binary_imputed_CLEAN \
 
 jodie.lord@kcl.ac.uk
 
+[jodielord.com](https://jodielord.netlify.com/)
+
 ---
 
 #END
