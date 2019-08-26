@@ -5,9 +5,6 @@
 
 ##Clunky code to extract INFO>0.7. Need to refine, but works. 
 
-##Gunzip files
-
-gunzip *.vcf
 
 ##Extract INFO =>0.7 
 
