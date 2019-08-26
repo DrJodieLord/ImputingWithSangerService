@@ -103,7 +103,11 @@ $snpflip -b $binary_b37.bim -f $fasta -o $binary
 * Use .reverse to flip alleles in .bim file and .ambiguous to remove ambiguous SNPs:
 
 ``` 
-$plink --bfile $binary_b37 --flip $binary.reverse --exclude $binary.ambiguous --make-bed --out $binary_b37_flipped
+$plink --bfile $binary_b37 \
+--flip $binary.reverse \
+--exclude $binary.ambiguous \
+--make-bed \
+--out $binary_b37_flipped
 ```
 
 * Generate ref allele file using .annotated_bim
@@ -115,7 +119,10 @@ cut -f 3,7 $binary.annotated_bim | sed 1d > refallele.txt
 * Generate VCF file (required file format for Sanger Service), keeping ref allele order using refallelle.txt file:
 
 ```
-$plink --bfile $binary_b37_flipped --a2-allele refallele.txt --recode vcf --out $binary_b37_flipped_sanger
+$plink --bfile $binary_b37_flipped \
+--a2-allele refallele.txt \
+--recode vcf \
+--out $binary_b37_flipped_sanger
 ```
 
 * `gzip` VCF file.
@@ -179,7 +186,10 @@ bash $scripts/remove_unnamed.sh
 * Recode each VCF back into PLINK format
 ```
 for i in *.vcf; do
-$plink --vcf $i --alow-no-sex --make-bed --out $i; done
+$plink --vcf $i \
+--alow-no-sex \
+--make-bed \
+--out $i; done
 ```
 
 * Extract SNPs from final SNP includes file (no unnamed and INFO =>0.7):
@@ -189,7 +199,11 @@ bash $scripts/extract_final_snps.sh
 
 * Merge chromosomes back together
 ```
-$plink --allow-no-sex --bfile 1.vcf --merge-list $scripts/per_chrm_merge --make-bed --out $binary_imputed
+$plink --allow-no-sex \
+--bfile 1.vcf \
+--merge-list $scripts/per_chrm_merge \
+--make-bed \
+--out $binary_imputed
 ```
 
 * Move all VCF files into seperate dircetory and archive
@@ -202,14 +216,23 @@ tar -zcvf vcf_archive.tar.gz vcfs
 * Remove post-imputation low freq SNPs and create final cleaned file:
 
 ```
-plink --bfile $binary_imputed --geno 0.01 --maf 0.01 --hwe 0.0001 --make-bed --out $binary_imputed_CLEAN
+plink --bfile $binary_imputed \
+--geno 0.01 \
+--maf 0.01 \
+--hwe 0.0001 \
+--make-bed \
+--out $binary_imputed_CLEAN
 ```
 
 *Note: sex and affection fields may have been removed from .fam files during imputation. If this is the case, these will need to be added back in using --pheno and --update-sex flags within PLINK.
 
 ```
 Example:
-$plink --bfile $binary_imputed_CLEAN --phone /path/to/casecontrol/file --update-sex /path/to/sex/file --make-bed --out $$binary_imputed_updatedpheno_FINAL
+$plink --bfile $binary_imputed_CLEAN \
+--phone /path/to/casecontrol/file \
+--update-sex /path/to/sex/file \
+--make-bed \
+--out $$binary_imputed_updatedpheno_FINAL
 ```
 
 ---
